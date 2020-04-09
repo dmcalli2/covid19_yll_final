@@ -1,0 +1,235 @@
+Diagnosis,three_character,fourth_character
+Myocardial infarction,I21,
+Myocardial infarction,I22,
+Myocardial infarction,I25,2
+Congestive heart failure,I09,9
+Congestive heart failure,I11,0
+Congestive heart failure,I13,0
+Congestive heart failure,I13,2
+Congestive heart failure,I25,5
+Congestive heart failure,I42,0
+Congestive heart failure,I42,5
+Congestive heart failure,I42,9
+Congestive heart failure,I43,
+Congestive heart failure,I50,
+Congestive heart failure,P29,6
+Cerebrovascular disease,G45,
+Cerebrovascular disease,G46,
+Cerebrovascular disease,H34,0
+Cerebrovascular disease,I60,
+Cerebrovascular disease,I61,
+Cerebrovascular disease,I62,
+Cerebrovascular disease,I63,
+Cerebrovascular disease,I64,
+Cerebrovascular disease,I65,
+Cerebrovascular disease,I66,
+Cerebrovascular disease,I67,
+Cerebrovascular disease,I68,
+Cerebrovascular disease,I69,
+Dementia,F00,
+Dementia,F01,
+Dementia,F02,
+Dementia,F03,
+Dementia,F05,1
+Dementia,G30,
+Dementia,G31,1
+Mild liver disease,B18,
+Mild liver disease,K70,0
+Mild liver disease,K70,1
+Mild liver disease,K70,2
+Mild liver disease,K70,3
+Mild liver disease,K70,9
+Mild liver disease,K71,3
+Mild liver disease,K71,4
+Mild liver disease,K71,5
+Mild liver disease,K71,7
+Mild liver disease,K73,
+Mild liver disease,K74,
+Mild liver disease,K76,0
+Mild liver disease,K76,2
+Mild liver disease,K76,3
+Mild liver disease,K76,4
+Mild liver disease,K76,8
+Mild liver disease,K76,9
+Mild liver disease,Z94,4
+Diabetes without chronic complication,E10,0
+Diabetes without chronic complication,E10,1
+Diabetes without chronic complication,E10,6
+Diabetes without chronic complication,E10,8
+Diabetes without chronic complication,E10,9
+Diabetes without chronic complication,E11,0
+Diabetes without chronic complication,E11,1
+Diabetes without chronic complication,E11,6
+Diabetes without chronic complication,E11,8
+Diabetes without chronic complication,E11,9
+Diabetes without chronic complication,E12,0
+Diabetes without chronic complication,E12,1
+Diabetes without chronic complication,E12,6
+Diabetes without chronic complication,E12,8
+Diabetes without chronic complication,E12,9
+Diabetes without chronic complication,E13,0
+Diabetes without chronic complication,E13,1
+Diabetes without chronic complication,E13,6
+Diabetes without chronic complication,E13,8
+Diabetes without chronic complication,E13,9
+Diabetes without chronic complication,E14,0
+Diabetes without chronic complication,E14,1
+Diabetes without chronic complication,E14,6
+Diabetes without chronic complication,E14,8
+Diabetes without chronic complication,E14,9
+Diabetes with chronic complication,E10,2
+Diabetes with chronic complication,E10,3
+Diabetes with chronic complication,E10,4
+Diabetes with chronic complication,E10,5
+Diabetes with chronic complication,E10,7
+Diabetes with chronic complication,E11,2
+Diabetes with chronic complication,E11,3
+Diabetes with chronic complication,E11,4
+Diabetes with chronic complication,E11,5
+Diabetes with chronic complication,E11,7
+Diabetes with chronic complication,E12,2
+Diabetes with chronic complication,E12,3
+Diabetes with chronic complication,E12,4
+Diabetes with chronic complication,E12,5
+Diabetes with chronic complication,E12,7
+Diabetes with chronic complication,E13,2
+Diabetes with chronic complication,E13,3
+Diabetes with chronic complication,E13,4
+Diabetes with chronic complication,E13,5
+Diabetes with chronic complication,E13,7
+Diabetes with chronic complication,E14,2
+Diabetes with chronic complication,E14,3
+Diabetes with chronic complication,E14,4
+Diabetes with chronic complication,E14,5
+Diabetes with chronic complication,E14,7
+Renal disease,I12,0
+Renal disease,I13,1
+Renal disease,N03,2
+Renal disease,N03,3
+Renal disease,N03,4
+Renal disease,N03,5
+Renal disease,N03,6
+Renal disease,N03,7
+Renal disease,N05,2
+Renal disease,N05,3
+Renal disease,N05,4
+Renal disease,N05,5
+Renal disease,N05,6
+Renal disease,N05,7
+Renal disease,N18,
+Renal disease,N19,
+Renal disease,N25,0
+Renal disease,Z49,0
+Renal disease,Z49,1
+Renal disease,Z49,2
+Renal disease,Z94,0
+Renal disease,Z99,2
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C00,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C01,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C02,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C03,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C04,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C05,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C06,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C07,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C08,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C09,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C10,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C11,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C12,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C13,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C14,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C15,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C16,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C17,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C18,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C19,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C20,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C21,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C22,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C23,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C24,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C25,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C26,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C30,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C31,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C32,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C33,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C34,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C37,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C38,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C39,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C40,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C41,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C43,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C45,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C46,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C47,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C48,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C49,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C50,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C51,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C52,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C53,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C54,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C55,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C56,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C57,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C58,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C60,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C61,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C62,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C63,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C64,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C65,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C66,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C67,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C68,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C69,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C70,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C71,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C72,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C73,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C74,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C75,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C76,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C81,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C82,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C83,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C84,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C85,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C88,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C90,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C91,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C92,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C93,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C94,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C95,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C96,
+"Any malignancy, including lymphoma and leukaemia, except malignant neoplasm of skin",C97,
+Moderate or severe liver disease,I85,0
+Moderate or severe liver disease,I85,9
+Moderate or severe liver disease,I86,4
+Moderate or severe liver disease,I98,2
+Moderate or severe liver disease,K70,4
+Moderate or severe liver disease,K71,1
+Moderate or severe liver disease,K72,1
+Moderate or severe liver disease,K72,9
+Moderate or severe liver disease,K76,5
+Moderate or severe liver disease,K76,6
+Moderate or severe liver disease,K76,7
+Metastatic solid tumour,C77,
+Metastatic solid tumour,C78,
+Metastatic solid tumour,C79,
+Metastatic solid tumour,C80,
+COPD,J40,
+COPD,J41,
+COPD,J42,
+COPD,J43,
+COPD,J44,
+Atrial fibrillation,I48,
+Hypertension,I10,
+Hypertension,I11,
+Hypertension,I12,
+Hypertension,I13,
+Hypertension,I15,

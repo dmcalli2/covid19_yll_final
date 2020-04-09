@@ -1,0 +1,78 @@
+---
+title: "Results"
+output:
+  html_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE, echo = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_knit$set(root.dir = here::here())
+options(knitr.kable.NA = '-')
+```
+
+# For results in paper
+
+
+
+```{r readdata}
+library(ggplot2)
+library(tidyverse)
+a <- list.files("Output_rmd/")
+b <- map(a, ~ readRDS(paste0("Output_rmd/", .x)))
+names(b) <- a %>% str_sub(1,-5)
+b <- transpose(b)
+names(b) <- c("est", "lci_uci", "mean_age_restricted", "mean_age_whole",
+               "plot_ages1", "plot_ages2", "plot_ages3", "plot_surv", "plot1_yll", "plot2_yll",
+               "who", "yll_df", "yll_mean_who_restricted", "yll_mean_who_whole", "yll_smry")
+```
+
+
+```{r overall_yll}
+est <- tibble(analysis = names(b$est), est = map_dbl(b$est, identity))
+lci_uci <- tibble(analysis = names(b$lci_uci), lci_uci = map_chr(b$lci_uci, identity))
+est <- est %>% 
+  inner_join(lci_uci)
+est <- est %>% 
+  mutate(res = paste0(est, "(",lci_uci, ")")) %>% 
+  select(-est, -lci_uci) %>% 
+  separate(analysis, into = c("sex", "Age", "Comorbidity"), sep = "_") %>% 
+  spread(sex, res)
+knitr::kable(est)
+```
+
+
+```{r age_como_variation}
+yll_smry <- b$yll_smry
+yll_smry <- yll_smry[c("men_associated_modelled", "women_associated_modelled")]
+yll_smry <- map(yll_smry, ~ .x %>% set_names(c("Comorbidity count", "50-59", "60-69", "70-79", "80+")))
+names(yll_smry) <- c("Men", "Women")
+yll_smry$Women <- yll_smry$Women[,-1]
+yll_smry <- bind_cols(yll_smry)
+knitr::kable(yll_smry)
+
+
+```
+
+
+```{r whotables}
+who <- tibble(analysis = names(b$yll_mean_who_restricted), Restricted = map_dbl(b$yll_mean_who_restricted, identity))
+who$Whole <- map_dbl(b$yll_mean_who_whole, identity)
+
+who <- who %>% 
+  mutate(sex = if_else(str_detect(analysis, "^men"), "Men", "Women")) %>% 
+  distinct(sex, Whole, Restricted)
+who
+```
+
+```{r ages}
+# b$mean_age_whole
+age <- tibble(analysis = names(b$mean_age_whole), 
+              Whole = map_dbl(b$mean_age_whole, identity),
+              Restricted = map_dbl(b$mean_age_whole, identity)) %>% 
+  mutate(sex = if_else(str_detect(analysis, "^men"), "Men", "Women")) %>% 
+  distinct(sex, Whole, Restricted)
+age
+
+```
+

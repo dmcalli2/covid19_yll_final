@@ -1,0 +1,20 @@
+These are model outputs, coefficients and variance-covariance estimates for those coefficients (ie for the model coefficients THESE ARE NOT correlations/covariances for the prevalence of the conditions in the population).
+ from Gompertz survival models. The models were fit on very large datasets; these included all men and women aged 50 or older registered with a pracitce during 2011. Models were fit separately for men and women. For women there were 440563 patients and 70720 events. 
+For men there were 399649 patients and 65178 events. The model treated age as the timescale and included 11 parameters for each of the co-morbidities. It also included age-co-morbidity interaction terms.
+
+In addition to the model outputs I have included tables comparing life expectancy in these data to those provided by the WHO (as a check on the results) diagnostic plots for the Gompertz distribution, and plots of the survival according to age and comorbidity.
+
+
+## Diagnostic plots
+all_male_female_plots_gomp.pdf
+fit_of_gompertz_models.pdf
+
+## model coefficeints and variance-covariance matrix 
+female_coef.csv
+female_vcov.csv
+male_coef.csv
+male_vcov.csv
+
+## Comparison of life expectancy from gompretz model in SAIL veruss the WHO GBD life expectancies
+who_compare_men.csv
+who_compare_women.csv

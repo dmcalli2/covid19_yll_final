@@ -1,0 +1,17 @@
+Diseases	N	%
+Ischemic heart disease	249	27.8
+Atrial Fibrillation	213	23.7
+Heart failure	153	17.1
+Stroke	101	11.3
+Hypertension	655	73.0
+Diabetes	281	31.3
+Dementia	130	14.5
+COPD	150	16.7
+Active cancer in the past 5 years	155	17.3
+Chronic liver disease	37	4.1
+Chronic renal failure	199	22.2
+Number of comorbidities		
+0 comorbidities	15	2.1
+1 comorbidity	151	21.3
+2 comorbidities	184	25.9
+3 comorbidities and over	360	50.7
