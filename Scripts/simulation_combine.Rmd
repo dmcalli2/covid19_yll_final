@@ -4,7 +4,7 @@ author: David McAllister
 date: '`r format(Sys.time(), "%d %B, %Y")`'
 output: github_document
 params:
-   sex: men
+   sex: women
    correlation: associated
    correlation_como: modelled
 ---
@@ -277,7 +277,7 @@ The following shows the linear predictor for covariates without interactions by 
 non_age_lp <- italy[,name_cols] * (surv_smpls[, name_cols])
 ## This adds these together to get the non-age dependent part of the linear predictor
 non_age_lp <- rowSums(non_age_lp)
-hist(non_age_lp)
+hist(non_age_lp, breaks = 100)
 ```
 
 The following shows the linear predictor for covariates with interactions by age. All are negative, reflecting the fact that there is attenuation in the hazard ratios for the comorbid diseases with increasing age, as is common in chronic disease epidemiology.
@@ -288,7 +288,7 @@ The following shows the linear predictor for covariates with interactions by age
 all(paste0(name_cols, ":age") == name_cols_age )
 ## Loop through the different age groups to get the part of the LP with age interactions
 ages_lp <-  rowSums(italy_ages[, name_cols]  * surv_smpls[, name_cols_age])
-hist(ages_lp)
+hist(ages_lp, breaks = 100)
 ```
 
 
@@ -390,6 +390,8 @@ le_check <- apply(tot_surv, 1, function(x) {
     sum(x)
 })
 all(le_check ==1)
+saveRDS(le,  paste0("Data/", params$sex, "_", params$correlation, "_", params$correlation_como, "_le_pre_offset.Rds"))
+
 ```
 
 ## Offset life expectancy to allow for the fact that the LE in Wales is lower than the WHO levels
@@ -502,5 +504,6 @@ mylist <- list(est, lci_uci, mean_age_restricted, mean_age_whole,
                plot_ages1, plot_ages2, plot_ages3, plot_surv, plot1_yll, plot2_yll,
                who, yll_df, yll_mean_who_restricted, yll_mean_who_whole, yll_smry)
 saveRDS(mylist, paste0("Output_rmd/", params$sex, "_", params$correlation, "_", params$correlation_como, ".Rds"))
+
 ```
 
