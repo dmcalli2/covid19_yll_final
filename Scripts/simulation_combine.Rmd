@@ -4,9 +4,10 @@ author: David McAllister
 date: '`r format(Sys.time(), "%d %B, %Y")`'
 output: github_document
 params:
-   sex: women
+   sex: men
    correlation: associated
-   correlation_como: modelled
+   correlation_como: maximal
+   sd_como_age: low
 ---
 
 
@@ -16,7 +17,7 @@ knitr::opts_knit$set(root.dir = here::here())
 options(knitr.kable.NA = '-')
 ```
 
-# Years of Life Lost for `r params$sex` assuming age and comorbidity are `r params$correlation` `r if(params$correlation_como == "maximial") "and for the sensitivity analysis where the corerlation between comorbidities is assumed to be maximial" `.
+# Years of Life Lost for `r params$sex` assuming age and comorbidity are `r params$correlation`. The correlation between comorbidities was `r if (params$correlation_como %in% c("converged", "unconverged")) paste0("modelled and the model did/was ", params$correlation_como)` `r if (!params$correlation_como %in% c("converged", "unconverged")) paste0("estimated assuming that the association between comorbidities was ", params$correlation_como)`.
 
 This document combines the comorbidity, age and survival model outputs to estimate years of life lost. It can be rendered for men and women, and assuming that age and comorbidity are associated or independent. This particular report is for `r params$sex` and assumes that age and comorbidity are `r params$correlation`.
 
@@ -51,7 +52,8 @@ Read in simulated patients from comorbidity model, age-sex distribution from the
 
 
 ```{r readdata, message=FALSE, warning = FALSE}
-if(params$correlation_como == "modelled") italy <- readRDS("Data/SimulatedProfiles.Rds")
+if(params$correlation_como == "converged")   italy <- readRDS("Data/SimulatedProfilesConverged.Rds")
+if(params$correlation_como == "unconverged") italy <- readRDS("Data/SimulatedProfilesUnconverged.Rds")
 if(params$correlation_como == "maximal") italy <- readRDS("Data/highest_cor_como.Rds")
 if(params$correlation_como == "independent") italy <- readRDS("Data/independent_como.Rds")
 
@@ -63,7 +65,10 @@ age_sex <- read_tsv("Data/age_distribution_italian_deaths.txt")
 if(params$sex == "men") {
   my_vcov <- read_csv("Data/sail_outputs/male_vcov.csv")[,-1]
   my_coef <- read_csv("Data/sail_outputs/male_coef.csv")
-  if(params$correlation == "associated") age_smpls <- readRDS("Data/age_selection_male.Rds")
+  if(params$correlation == "associated") {
+    if(params$sd_como_age == "low") {age_smpls <- readRDS("Data/age_selection_male_0_5.Rds")}
+    if(params$sd_como_age == "high"){age_smpls <- readRDS("Data/age_selection_male_1.Rds")}
+    }
   if(params$correlation == "independent") age_smpls <- readRDS("Data/age_selection_no_comorbid_male.Rds")
   who <- read_csv("Data/sail_outputs/who_compare_men.csv")
 
@@ -72,7 +77,10 @@ if(params$sex == "men") {
 if(params$sex == "women") {
   my_vcov <- read_csv("Data/sail_outputs/female_vcov.csv")[,-1]
   my_coef <- read_csv("Data/sail_outputs/female_coef.csv")
-  if(params$correlation == "associated") age_smpls <- readRDS("Data/age_selection_female.Rds")
+  if(params$correlation == "associated") {
+    if(params$sd_como_age == "low") {age_smpls <- readRDS("Data/age_selection_female_0_5.Rds")}
+    if(params$sd_como_age == "high"){age_smpls <- readRDS("Data/age_selection_female_1.Rds")}
+  }
   if(params$correlation == "independent") age_smpls <- readRDS("Data/age_selection_no_comorbid_female.Rds")
   who <- read_csv("Data/sail_outputs/who_compare_women.csv")
 
@@ -314,6 +322,10 @@ Where the time is before the patients age at baseline (in this case the age at d
 
 In this function all notional patients have the same shape parameter, but have patient-specific rate parameters. This function is not vectorised with respect to the rate and shape parameters, but it is nonetheless very fast.
 
+For one simulated patient in the "low" SD age group the rate and age variables are such that the function returns a missing value, this is the only sample that does so.
+Presumably there is a numerical reason in the internals of the function. Give a warning and drop from the summary function at the end. Return an error if there is more than one missing.
+Only occured in most recent set of simulated patients which is a fresh simulation.
+
 ``` {r survivaltime}
 
 times_vect <- seq(50, 150, 0.25)
@@ -324,6 +336,12 @@ for(i in 1:10000){
   tot_surv[i,] <- t(a)
 }
 
+tot_surv_na <- matrix(is.na(tot_surv), nrow = 10000, ncol = length(times_vect))
+tot_surv_na <- rowSums(tot_surv_na)
+tot_surv_na <- any(tot_surv_na >=1)
+tot_surv_na <- sum(tot_surv_na)
+if(tot_surv_na >=1) warning(paste0("The SurvGomp function returned NaN for ", tot_surv_na, " simulated patients"))
+if(tot_surv_na >=5) stop()
 ```
 
 
@@ -485,13 +503,13 @@ plot2_yll
 
 ## Crude approach to obtain 95% credible interval
 
-The following approach uses empirical bootstrapping to calcualte an uncertainty interval around the mean YLL. This 
+The following approach uses empirical bootstrapping to calculate an uncertainty interval around the mean YLL. This 
 
 ```{r credible intervals}
 res <- map_dbl(1:1000, ~  mean(sample(yll, 404, replace = TRUE)))
 hist(res, xlab = "Mean Years of Life Lost")
-est <- mean(res) %>% round(1)
-lci_uci <- quantile(res, probs = c(0.025, 0.975)) %>% round(1) %>% paste(collapse = "-")
+est <- mean(res, na.rm = TRUE) %>% round(1)
+lci_uci <- quantile(res, probs = c(0.025, 0.975), na.rm = TRUE) %>% round(1) %>% paste(collapse = "-")
 est
 lci_uci
 ```
@@ -503,7 +521,12 @@ The mean and (95% credible interval) for the years of life lost using this appro
 mylist <- list(est, lci_uci, mean_age_restricted, mean_age_whole,
                plot_ages1, plot_ages2, plot_ages3, plot_surv, plot1_yll, plot2_yll,
                who, yll_df, yll_mean_who_restricted, yll_mean_who_whole, yll_smry)
-saveRDS(mylist, paste0("Output_rmd/", params$sex, "_", params$correlation, "_", params$correlation_como, ".Rds"))
+saveRDS(mylist, paste0("Output_rmd/", 
+                       params$sex, "_", 
+                       params$correlation, "_", 
+                       params$correlation_como, "_", 
+                       params$sd_como_age,
+                       ".Rds"))
 
 ```
 

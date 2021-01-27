@@ -1,7 +1,7 @@
 ---
 title: "Addendum to COVID-19 – exploring the implications of long-term condition type and extent of multimorbidity on years of life lost: a modelling study"
 author: Peter Hanlon, Fergus Chadwick, Anoop Shah, Rachael Wood, Jon Minton, Gerry McCartney, Colin Fischbacher, Frances S Mair, Dirk Husmeier, Jason Matthiopoulos and David A McAllister
-output: github_document
+output: html_document
 ---
   
 ```{r setup, include=FALSE, echo = FALSE}

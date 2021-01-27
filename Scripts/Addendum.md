@@ -8,17 +8,17 @@ Matthiopoulos and David A McAllister
 
 # Executive summary
 
-  - Following additional analyses, using a range of national life tables
+-   Following additional analyses, using a range of national life tables
     in addition to the Global Burden of Disease (GBD) 2010 life tables
     which we used previously, the average years of life lost (YLL) due
     to COVID-19 remained above 10, even after adjusting for the number
     of long-term conditions
 
-  - The number and type of long-term conditions has a large impact on
+-   The number and type of long-term conditions has a large impact on
     YLL for individual patients, but a minimal impact on the overall
     average YLL
 
-  - The comparatively small average overall impact is largely due to the
+-   The comparatively small average overall impact is largely due to the
     fact that long-term conditions in general and multimorbidity in
     particular (the presence of two or more long-term conditions) are
     common in the older general adult population, not just among people
@@ -40,13 +40,13 @@ github repository](https://github.com/dmcalli2/covid19_yll_final).
 
 Specifically this addendum addresses:-
 
-  - The impact of whether using different life tables would change the
+-   The impact of whether using different life tables would change the
     results
 
-  - Why accounting for the number and type of long-term conditions does
+-   Why accounting for the number and type of long-term conditions does
     not have a large impact on the average years of life lost
 
-  - The limited generalisability of these findings for special
+-   The limited generalisability of these findings for special
     populations such as care homes.
 
 # The impact of using different life tables
@@ -111,22 +111,22 @@ the recent press-coverage
 ### Table A1 Years of life lost by sex and life table, unadjusted and adjusted for number and type of long-term conditions
 
 | Sex    | Life Table        | LTC number and type unadjusted | LTC number and type adjusted | Difference with adjustment (months) |
-| :----- | :---------------- | :----------------------------- | ---------------------------: | ----------------------------------: |
-| Total  | GBD 2010          | 13.3\*                         |                         12.4 |                                  11 |
-| Total  | Italy 2017        | 11.3                           |                         10.8 |                                   6 |
-| Total  | UK 1016-2018      | 11.1                           |                         10.6 |                                   6 |
-| Total  | US 2017           | 10.9                           |                         10.4 |                                   6 |
-| Total  | Wales (see paper) | 11                             |                         10.5 |                                   6 |
-| Male   | GBD 2010          | 14\*                           |                         13.2 |                                  10 |
-| Male   | Italy 2017        | 11.5                           |                         11.1 |                                   4 |
-| Male   | UK 1016-2018      | 11.4                           |                         11.0 |                                   4 |
-| Male   | US 2017           | 11.1                           |                         10.7 |                                   4 |
-| Male   | Wales (see paper) | 11.2                           |                         10.9 |                                   4 |
-| Female | GBD 2010          | 11.8\*                         |                         10.5 |                                  16 |
-| Female | Italy 2017        | 10.9                           |                         10.2 |                                   9 |
-| Female | UK 1016-2018      | 10.5                           |                          9.8 |                                   9 |
-| Female | US 2017           | 10.5                           |                          9.7 |                                   9 |
-| Female | Wales (see paper) | 10.3                           |                          9.6 |                                   9 |
+|:-------|:------------------|:-------------------------------|-----------------------------:|------------------------------------:|
+| Total  | GBD 2010          | 13.3\*                         |                         10.9 |                                  29 |
+| Total  | Italy 2017        | 11.4                           |                          9.7 |                                  21 |
+| Total  | UK 1016-2018      | 11.2                           |                          9.5 |                                  21 |
+| Total  | US 2017           | 11                             |                          9.3 |                                  21 |
+| Total  | Wales (see paper) | 11                             |                          9.3 |                                  21 |
+| Male   | GBD 2010          | 14\*                           |                         11.6 |                                  29 |
+| Male   | Italy 2017        | 11.6                           |                          9.8 |                                  20 |
+| Male   | UK 1016-2018      | 11.5                           |                          9.8 |                                  20 |
+| Male   | US 2017           | 11.2                           |                          9.5 |                                  20 |
+| Male   | Wales (see paper) | 11.3                           |                          9.6 |                                  20 |
+| Female | GBD 2010          | 11.8\*                         |                          9.4 |                                  29 |
+| Female | Italy 2017        | 10.9                           |                          9.2 |                                  21 |
+| Female | UK 1016-2018      | 10.5                           |                          8.8 |                                  21 |
+| Female | US 2017           | 10.5                           |                          8.8 |                                  21 |
+| Female | Wales (see paper) | 10.3                           |                          8.6 |                                  21 |
 
 *LTC: long-term conditions. \* The GBD-2010 life tables were only
 available in 5-year bands, hence we estimated the YLL in the age-bands
@@ -159,7 +159,7 @@ conditions.
 ### Table A2 Hazard ratios at selected ages estimated separately for men and women having mutually adjusted for all other variables included in the model
 
 | Sex    | Condition                             | Age 50 | Age 60 | Age 70 | Age 80 | Age 90 |
-| :----- | :------------------------------------ | -----: | -----: | -----: | -----: | -----: |
+|:-------|:--------------------------------------|-------:|-------:|-------:|-------:|-------:|
 | Female | Atrial fibrillation                   |   1.18 |   1.24 |   1.31 |   1.38 |   1.46 |
 | Female | Cancer                                |   2.80 |   2.15 |   1.66 |   1.27 |   0.98 |
 | Female | Chronic obstructive pulmonary disease |   3.89 |   2.95 |   2.24 |   1.70 |   1.29 |
@@ -203,36 +203,34 @@ than the GBD-2010 life table.
 #### Men
 
 | Comorbidity count | 50-59 | 60-69 | 70-79 | 80 plus |
-| ----------------: | ----: | ----: | ----: | ------: |
-|                 0 | 30.98 | 23.06 | 15.79 |    9.35 |
-|                 1 | 30.29 | 22.39 | 14.97 |    8.56 |
-|                 2 | 25.28 | 18.59 | 12.29 |    6.81 |
-|                 3 | 20.88 | 15.78 | 10.21 |    5.42 |
-|                 4 | 19.56 | 13.19 |  8.42 |    4.02 |
-|                 5 | 14.43 | 10.21 |  6.58 |    2.81 |
-|                 6 |    \- |  4.05 |  5.09 |    1.90 |
-|                 7 |    \- |  5.31 |  4.38 |    1.52 |
-|                 8 |    \- |  4.24 |  2.81 |    1.06 |
-|                 9 |    \- |  2.78 |  1.99 |    0.86 |
-|                10 |    \- |    \- |  1.36 |    0.62 |
-|                11 |    \- |    \- |    \- |    0.58 |
+|------------------:|------:|------:|------:|--------:|
+|                 0 | 32.24 | 23.71 | 17.17 |    4.27 |
+|                 1 | 32.57 | 23.72 | 15.43 |    4.35 |
+|                 2 | 28.86 | 21.16 | 12.91 |    3.02 |
+|                 3 | 26.81 | 18.47 | 10.71 |    2.27 |
+|                 4 | 23.62 | 15.90 |  9.21 |    1.02 |
+|                 5 | 21.51 | 15.07 |  6.93 |   -0.09 |
+|                 6 | 18.01 | 11.06 |  5.48 |   -1.76 |
+|                 7 | 18.37 |  8.61 |  3.80 |   -1.71 |
+|                 8 | 18.90 |  7.45 |  2.84 |   -2.29 |
+|                 9 |    \- | 12.06 | -5.79 |    3.73 |
+|                10 |    \- |    \- | -8.62 |      \- |
 
 #### Women
 
 | Comorbidity count | 50-59 | 60-69 | 70-79 | 80 plus |
-| ----------------: | ----: | ----: | ----: | ------: |
-|                 0 | 33.09 | 24.28 | 16.71 |    9.75 |
-|                 1 | 32.86 | 24.32 | 16.22 |    8.26 |
-|                 2 | 27.33 | 20.17 | 13.36 |    6.60 |
-|                 3 | 24.36 | 16.93 | 11.19 |    5.29 |
-|                 4 | 19.02 | 14.49 |  9.21 |    4.05 |
-|                 5 | 15.20 | 10.65 |  7.48 |    3.09 |
-|                 6 | 16.66 |  9.18 |  5.79 |    2.32 |
-|                 7 |    \- |  7.18 |  4.14 |    1.95 |
-|                 8 |    \- |  5.32 |  3.26 |    1.50 |
-|                 9 |    \- |    \- |  2.28 |    1.17 |
-|                10 |    \- |  2.27 |  1.83 |    0.77 |
-|                11 |    \- |    \- |  0.91 |    0.86 |
+|------------------:|------:|------:|------:|--------:|
+|                 0 | 33.79 | 29.99 | 17.79 |    4.97 |
+|                 1 | 36.23 | 26.90 | 17.97 |    5.09 |
+|                 2 | 32.46 | 23.75 | 15.92 |    3.09 |
+|                 3 | 31.65 | 21.86 | 14.22 |    1.60 |
+|                 4 | 28.47 | 20.12 | 11.84 |    0.37 |
+|                 5 | 26.66 | 18.60 | 10.10 |    0.03 |
+|                 6 | 20.16 | 16.71 |  9.44 |   -0.71 |
+|                 7 | 22.09 | 13.72 |  8.14 |   -1.91 |
+|                 8 | 28.67 | 18.56 |  7.52 |   -1.73 |
+|                 9 |    \- | 10.67 |  8.43 |   -4.75 |
+|                10 |    \- |    \- | -0.03 |      \- |
 
 Instead, we suspect that the main reason for the comparatively modest
 impact of adjusting for multimorbidity count on the overall YLL is that
@@ -248,6 +246,10 @@ multimorbidity counts were lower in the population than in people dying
 from COVID-19, but among older people were nonetheless high for both.
 
 ### Figure A2 Distribution of multimorbidity by age and sex
+
+    ## Warning: Removed 10 rows containing missing values (geom_point).
+
+    ## Warning: Removed 1 row(s) containing missing values (geom_path).
 
 ![](Addendum_files/figure-gfm/compare_comorbidity-1.png)<!-- -->
 

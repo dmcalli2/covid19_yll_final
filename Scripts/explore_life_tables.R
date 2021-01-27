@@ -43,7 +43,7 @@ MakeONSCompare <- function(myshape, myrate, interval_yrs = 1){
 
 
 ## Obtain and plot life tables ----
-## Wales coefficeints data, use to create life table
+## Wales coefficients data, use to create life table
 wales_coef_m <- read_csv("Data/sail_outputs/cept_coef_gomp_m.csv")
 wales_coef_f <- read_csv("Data/sail_outputs/cept_coef_gomp_f.csv")
 
@@ -110,8 +110,8 @@ plot_le
 saveRDS(plot_le, "Outputs/compare_lifetables.Rds")
 
 ## Estimate age-sex specific ratio between LE in Wales data and LE in life tables ----
-## read in modelled Italy data
-italy <- readRDS("Data/SimulatedProfiles.Rds")
+## read in modelled (converged) Italy data
+italy <- readRDS("Data/SimulatedProfilesConverged.Rds")
 names(italy) <- str_to_lower(names(italy))
 italy <- as.matrix(italy)
 italy_count <- rowSums(italy)
@@ -143,17 +143,17 @@ quantile(lts_ratio$le_ratio)
 mean(lts_ratio$le_ratio)
 
 ## Calcualte YLL based on age alone for different life tables ----
-men_age_smpls   <- readRDS("Data/age_selection_male.Rds")
-women_age_smpls <- readRDS("Data/age_selection_female.Rds")
+men_age_smpls   <- readRDS("Data/age_selection_male_0_5.Rds")
+women_age_smpls <- readRDS("Data/age_selection_female_0_5.Rds")
 age_both <- bind_rows(tibble(sex = "male", age = men_age_smpls, comorbidity_count = italy_count),
                       tibble(sex = "female", age = women_age_smpls, comorbidity_count = italy_count)) %>% 
   mutate(age = round(age))
 age_both_cmpr <- lts_lng %>% 
   inner_join(age_both) 
 
-## Calcualte YLL based on age and comorbidities using different life tables ----
-le_multi_m <- readRDS("Data/men_associated_modelled_le_pre_offset.Rds")
-le_multi_f <- readRDS("Data/women_associated_modelled_le_pre_offset.Rds")
+## Calculate YLL based on age and comorbidities using different life tables ----
+le_multi_m <- readRDS("Data/men_associated_converged_le_pre_offset.Rds")
+le_multi_f <- readRDS("Data/women_associated_converged_le_pre_offset.Rds")
 
 le_multi <- bind_rows(tibble(sex = "male",   age = men_age_smpls,   le_pre = le_multi_m, comorbidity_count = italy_count),
                       tibble(sex = "female", age = women_age_smpls, le_pre = le_multi_f, comorbidity_count = italy_count)) %>% 
@@ -189,13 +189,13 @@ both_cmp_smry <- bind_rows(`Not LTC adjusted` = age_both_cmpr_smry, `LTC adjuste
          sex = if_else(sex == "female", "Female", "Male")) %>% 
   select(Sex = sex, `Life Table` = lifetable, everything()) 
 
-men_gbd <- readRDS("Output_rmd/men_associated_modelled.Rds")
+men_gbd <- readRDS("Output_rmd/men_associated_converged_low.Rds")
 names(men_gbd) <- c("est", "lci_uci", "mean_age_restricted", "mean_age_whole",
   "plot_ages1", "plot_ages2", "plot_ages3", "plot_surv", "plot1_yll", "plot2_yll",
   "who", "yll_df", "yll_mean_who_restricted", "yll_mean_who_whole", "yll_smry")
 men_gbd <- men_gbd[c("est", "yll_mean_who_restricted")] %>% 
   as.data.frame() 
-women_gbd <- readRDS("Output_rmd/women_associated_modelled.Rds")
+women_gbd <- readRDS("Output_rmd/women_associated_converged_low.Rds")
 names(women_gbd) <- c("est", "lci_uci", "mean_age_restricted", "mean_age_whole",
                     "plot_ages1", "plot_ages2", "plot_ages3", "plot_surv", "plot1_yll", "plot2_yll",
                     "who", "yll_df", "yll_mean_who_restricted", "yll_mean_who_whole", "yll_smry")

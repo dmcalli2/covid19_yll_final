@@ -5,17 +5,19 @@ library(MASS)
 # Sample Posterior --------------------------------------------------------
 
 # Read in runjags object
-results <- readRDS("Data/JAGSresults")
+unconverged <- readRDS("Data/JAGSresults")
 # Convert runjags object to tidy dataframe
-tidy_result <- tidy_draws(results)
+unconverged <- tidy_draws(unconverged)
+## read new object which is already in a tidy format
+converged <- readRDS("Data/results_converged.rds")
 
+SimulateProfiles <- function(tidied_result){
 # Useful parameters
 n_dis <- 11 # Number of disease
 sample_size <- 10000 # Number of patient profiles drawn
 
 # Sample rows from posterior dataframe
-posterior_samples <- sample_n(tidy_result, sample_size) 
-
+posterior_samples <- sample_n(tidied_result, sample_size) 
 
 # Define Profile Generating Function --------------------------------------
 
@@ -44,8 +46,15 @@ for(i in seq_along(1:sample_size)){
 patient_profiles_df <- as.data.frame(patient_profiles)
 names(patient_profiles_df) <- dis_names <- c("IHD", "Atr_Fib", "H_Fail", "Stroke", "Hypert", "Diab", "Demen", "COPD", "Cancer", "Liver", "Renal")
 
-# Save Object
-# saveRDS(patient_profiles_df, "Data/SimulatedCovidPatientProfiles")
+# return object
+patient_profiles_df
+}
 
+unconverged <- SimulateProfiles(unconverged)
+converged <- SimulateProfiles(converged)
+
+# Save Object
+saveRDS(unconverged, "Data/SimulatedProfilesUnconverged.Rds")
+saveRDS(converged,   "Data/SimulatedProfilesConverged.Rds")
 
 

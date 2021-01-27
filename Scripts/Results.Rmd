@@ -6,7 +6,7 @@ output:
 ---
 
 ```{r setup, include=FALSE, echo = FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_knit$set(root.dir = here::here())
 options(knitr.kable.NA = '-')
 ```
@@ -36,18 +36,21 @@ est <- est %>%
 est <- est %>% 
   mutate(res = paste0(est, "(",lci_uci, ")")) %>% 
   select(-est, -lci_uci) %>% 
-  separate(analysis, into = c("sex", "Age", "Comorbidity"), sep = "_") %>% 
-  spread(sex, res)
+  separate(analysis, into = c("sex", "Age", "Comorbidity", "sdage"), sep = "_") %>% 
+  filter(!Comorbidity == "unconverged") %>% 
+  spread(sex, res) %>% 
+  arrange(Age, sdage, Comorbidity)
 knitr::kable(est)
 ```
 
 
 ```{r age_como_variation}
 yll_smry <- b$yll_smry
-yll_smry <- yll_smry[c("men_associated_modelled", "women_associated_modelled")]
+yll_smry <- yll_smry[c("men_associated_converged_low", "women_associated_converged_low")]
 yll_smry <- map(yll_smry, ~ .x %>% set_names(c("Comorbidity count", "50-59", "60-69", "70-79", "80+")))
 names(yll_smry) <- c("Men", "Women")
 yll_smry$Women <- yll_smry$Women[,-1]
+names(yll_smry$Women) <- paste0("Women ", names(yll_smry$Women))
 yll_smry <- bind_cols(yll_smry)
 knitr::kable(yll_smry)
 
@@ -74,5 +77,22 @@ age <- tibble(analysis = names(b$mean_age_whole),
   distinct(sex, Whole, Restricted)
 age
 
+```
+
+## For revision compare all converged and unconverged
+
+```{r cmprconvuncon}
+est <- tibble(analysis = names(b$est), est = map_dbl(b$est, identity))
+lci_uci <- tibble(analysis = names(b$lci_uci), lci_uci = map_chr(b$lci_uci, identity))
+est <- est %>% 
+  inner_join(lci_uci)
+est <- est %>% 
+  mutate(res = paste0(est, "(",lci_uci, ")")) %>% 
+  select(-est, -lci_uci) %>% 
+  separate(analysis, into = c("sex", "Age", "Comorbidity", "sdage"), sep = "_") %>% 
+  spread(Comorbidity, res) %>% 
+  arrange(sex, Age, sdage) %>% 
+  select(sex, Age, sdage, independent, unconverged, converged, maximal)
+knitr::kable(est)
 ```
 

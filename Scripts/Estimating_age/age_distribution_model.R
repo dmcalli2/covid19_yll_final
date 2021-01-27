@@ -5,7 +5,10 @@ library(tidyverse)
 library(runjags)
 
 ## Run separately for men and women ----
-sex <- "female"
+sex <- "male"
+## run again with larger SD around effect size of comorbidity on age
+eff_size_sd <- 0.5
+# eff_size_sd <- 1
 
 ## Read data ----
 italy <- readRDS("Data/SimulatedProfiles.Rds")
@@ -121,7 +124,7 @@ prec <- 1/tau
 tau <- s^2
 s ~ dnorm(0, 0.01)T(0,)
 # effect of comorbidity on age
-como_effect ~ dnorm(eff_size, 1/0.5^2)
+como_effect ~ dnorm(eff_size, 1/eff_size_sd^2)
 
 ## Mean for each comorbidity group
 m[1] <- alpha
@@ -147,6 +150,7 @@ d <- run.jags(modelstring, data = list(age_obs = age_obs,
                                        n = length(age_obs),
                                        n_grps = n_grps,
                                        eff_size = sex_eff_size,
+                                       eff_size_sd = eff_size_sd,
                                        weighted_sum = weighted_sum),
               monitor = c("tau", "group_var", "age", "global_mean" ), n.chains = 2)
 d
@@ -159,8 +163,8 @@ res <- res [ , paste0("age[", 1:7, "]")]
 
 italy_count_indx <- if_else(italy_count >=6, 6, italy_count)
 italy_count_indx <- italy_count_indx +1
-## Selct using matrix indexing
+## Select using matrix indexing
 italy_count_indx <- cbind(1:10000, italy_count_indx)
 age_slct <- res[italy_count_indx]
 
-saveRDS(age_slct, paste0("Data/age_selection_", sex,".Rds"))
+saveRDS(age_slct, paste0("Data/age_selection_", sex, "_", str_replace(eff_size_sd, "\\.", "_"),".Rds"))
